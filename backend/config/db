@@ -1,0 +1,19 @@
+//Connection file to mongo db
+import mongoose from "mongoose";
+import colors from "colors";
+const url = 'mongodb+srv://vishalv2806:Vishal@1221@cluster0.vb31byp.mongodb.net/?retryWrites=true&w=majority';
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(url, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+      useCreateIndex: true,
+    });
+    console.log(`MongoDB Connected: ${conn.connection.host}`.cyan.underline);
+  } catch (error) {
+    console.error(`Error: ${error.message}`.red.bold);
+    process.exit();
+  }
+};
+
+export default connectDB;
